@@ -1,0 +1,142 @@
+// #include <iostream>
+// using namespace std;
+
+// // Node structure
+// struct Node {
+//     int data;
+//     Node* next;
+// };
+
+// // ================= STACK =================
+
+// Node* top = NULL;
+
+// // Push operation
+// void push(int value) {
+//     Node* newNode = new Node();
+
+//     newNode->data = value;
+//     newNode->next = top;
+//     top = newNode;
+
+//     cout << value << " pushed into Stack\n";
+// }
+
+// // Pop operation
+// void pop() {
+//     if (top == NULL) {
+//         cout << "Stack Underflow\n";
+//         return;
+//     }
+
+//     Node* temp = top;
+//     cout << top->data << " popped from Stack\n";
+
+//     top = top->next;
+//     delete temp;
+// }
+
+// // Display Stack
+// void displayStack() {
+//     Node* temp = top;
+
+//     cout << "Stack: ";
+//     while (temp != NULL) {
+//         cout << temp->data << " -> ";
+//         temp = temp->next;
+//     }
+//     cout << "NULL\n";
+// }
+
+
+// // ================= QUEUE =================
+
+// Node* front = NULL;
+// Node* rear = NULL;
+
+// // Enqueue operation
+// void enqueue(int value) {
+//     Node* newNode = new Node();
+
+//     newNode->data = value;
+//     newNode->next = NULL;
+
+//     if (rear == NULL) {
+//         front = rear = newNode;
+//     } else {
+//         rear->next = newNode;
+//         rear = newNode;
+//     }
+
+//     cout << value << " enqueued into Queue\n";
+// }
+
+// // Dequeue operation
+// void dequeue() {
+//     if (front == NULL) {
+//         cout << "Queue Underflow\n";
+//         return;
+//     }
+
+//     Node* temp = front;
+//     cout << front->data << " dequeued from Queue\n";
+
+//     front = front->next;
+
+//     if (front == NULL) {
+//         rear = NULL;
+//     }
+
+//     delete temp;
+// }
+
+// // Display Queue
+// void displayQueue() {
+//     Node* temp = front;
+
+//     cout << "Queue: ";
+//     while (temp != NULL) {
+//         cout << temp->data << " -> ";
+//         temp = temp->next;
+//     }
+//     cout << "NULL\n";
+// }
+
+
+// // ================= MAIN FUNCTION =================
+
+// int main() {
+
+//     // STACK OPERATIONS
+//     cout << "===== STACK OPERATIONS =====\n";
+
+//     push(10);
+//     push(20);
+//     push(30);
+
+//     displayStack();
+
+//     pop();
+//     displayStack();
+
+//     pop();
+//     displayStack();
+
+
+//     // QUEUE OPERATIONS
+//     cout << "\n===== QUEUE OPERATIONS =====\n";
+
+//     enqueue(10);
+//     enqueue(20);
+//     enqueue(30);
+
+//     displayQueue();
+
+//     dequeue();
+//     displayQueue();
+
+//     dequeue();
+//     displayQueue();
+
+//     return 0;
+// }
