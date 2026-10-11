@@ -1,0 +1,126 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void heap(vector<int>& a, int n, int i) {
+    int m = i;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
+
+    if (l < n && a[l] > a[m])
+        m = l;
+
+    if (r < n && a[r] > a[m])
+        m = r;
+
+    if (m != i) {
+        swap(a[i], a[m]);
+        heap(a, n, m);
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> a(n);
+
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heap(a, n, i);
+
+    cout << "Max Heap: ";
+    for (int x : a)
+        cout << x << " ";
+
+    for (int i = n - 1; i > 0; i--) {
+        swap(a[0], a[i]);
+        heap(a, i, 0);
+    }
+
+    cout << "\nHeap Sort: ";
+    for (int x : a)
+        cout << x << " ";
+
+    return 0;
+
+
+
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> a(n), b(n);
+
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    sort(a.begin(), a.end());
+
+    int l = 0, r = n - 1, k = 0;
+    long long sum = 0;
+
+    while (l <= r) {
+        if (k % 2 == 0)
+            b[k++] = a[l++];
+        else
+            b[k++] = a[r--];
+    }
+
+    for (int i = 0; i < n - 1; i++)
+        sum += abs(b[i] - b[i + 1]);
+
+    cout << "Arrangement: ";
+    for (int x : b)
+        cout << x << " ";
+
+    cout << "\nSum = " << sum;
+
+    return 0;
+}
+
+
+
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+int main() {
+    int n, target;
+    cin >> n;
+
+    vector<int> a(n);
+
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    cin >> target;
+
+    int l = 0;
+    int minLen = INT_MAX;
+    long long sum = 0;
+
+    for (int r = 0; r < n; r++) {
+        sum += a[r];
+
+        while (sum > target) {
+            minLen = min(minLen, r - l + 1);
+            sum -= a[l++];
+        }
+    }
+
+    cout << (minLen == INT_MAX ? -1 : minLen);
+
+    return 0;
+}
+}
