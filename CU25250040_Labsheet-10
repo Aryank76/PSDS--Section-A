@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int digitSum(int n) {
+    int sum = 0;
+
+    while (n > 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+
+    return sum;
+}
+
+void solve() {
+    int N;
+    cin >> N;
+
+    map<int, long long> freq;
+    long long ans = 0;
+
+    for (int i = 0; i < N; i++) {
+        int x;
+        cin >> x;
+
+        int sum = digitSum(x);
+
+        ans += freq[sum];
+        freq[sum]++;
+    }
+
+    cout << ans << endl;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    solve();
+
+    return 0;
+}
